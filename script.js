@@ -1,11 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// generate arrays
-lowercase = "abcdefghijklmnopqrstuvwxyz";
-uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-numbers = "0123456789";
-symbols = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+// generate strings
+var lowercase = "abcdefghijklmnopqrstuvwxyz";
+var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numbers = "0123456789";
+var symbols = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+// transfer to arrays
+// var lowercaseArr = lowercase.split("");
+// var uppercaseArr = uppercase.split("");
+// var numbersArr = numbers.split("");
+// var symbolsArr = symbols.split("");
+// console.log(lowercaseArr);
 
 // Write password to the #password input
 function writePassword() {
@@ -29,7 +35,51 @@ function writePassword() {
   console.log(hasNumber);
   console.log(hasSymbol);
 
-  var password = generatePassword();
+  // will have easier way tho
+  if (
+    hasLower === false &&
+    hasUpper === false &&
+    hasNumber === false &&
+    hasSymbol === false
+  ) {
+    array = [""];
+  } else if (
+    hasLower === true &&
+    hasUpper === false &&
+    hasNumber === false &&
+    hasSymbol === false
+  ) {
+    array = lowercase;
+  } else if (
+    hasLower === true &&
+    hasUpper === true &&
+    hasNumber === false &&
+    hasSymbol === false
+  ) {
+    array = lowercase + uppercase;
+  } else if (
+    hasLower === true &&
+    hasUpper === true &&
+    hasNumber === true &&
+    hasSymbol === false
+  ) {
+    array = lowercase + uppercase + numbers;
+  } else {
+    array = lowercase + uppercase + numbers + symbols;
+  }
+
+  var Arr = array.split("");
+  console.log(Arr);
+  function generatePassword(length) {
+    var password = "";
+    for (var i = 0; i < length; i++) {
+      password += Arr[Math.floor(Math.random() * Arr.length)];
+    }
+
+    return password;
+  }
+
+  var password = generatePassword(length);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
