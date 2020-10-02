@@ -18,6 +18,7 @@ function writePassword() {
   // set criteria for password
   // set length of the password
   var length = prompt("length of password", "type a number from 8-128");
+
   // make it a number
   length = +length;
   // contain lowercase letters in password
@@ -51,6 +52,41 @@ function writePassword() {
   ) {
     array = lowercase;
   } else if (
+    hasLower === false &&
+    hasUpper === true &&
+    hasNumber === false &&
+    hasSymbol === false
+  ) {
+    array = uppercase;
+  } else if (
+    hasLower === false &&
+    hasUpper === false &&
+    hasNumber === true &&
+    hasSymbol === false
+  ) {
+    array = numbers;
+  } else if (
+    hasLower === false &&
+    hasUpper === false &&
+    hasNumber === false &&
+    hasSymbol === true
+  ) {
+    array = symbols;
+  } else if (
+    hasLower === true &&
+    hasUpper === false &&
+    hasNumber === true &&
+    hasSymbol === false
+  ) {
+    array = lowercase + numbers;
+  } else if (
+    hasLower === true &&
+    hasUpper === false &&
+    hasNumber === false &&
+    hasSymbol === true
+  ) {
+    array = lowercase + symbols;
+  } else if (
     hasLower === true &&
     hasUpper === true &&
     hasNumber === false &&
@@ -64,10 +100,39 @@ function writePassword() {
     hasSymbol === false
   ) {
     array = lowercase + uppercase + numbers;
+  } else if (
+    hasLower === true &&
+    hasUpper === false &&
+    hasNumber === true &&
+    hasSymbol === true
+  ) {
+    array = lowercase + numbers + symbols;
+  } else if (
+    hasLower === true &&
+    hasUpper === true &&
+    hasNumber === false &&
+    hasSymbol === true
+  ) {
+    array = lowercase + uppercase + symbols;
+  } else if (
+    hasLower === false &&
+    hasUpper === true &&
+    hasNumber === true &&
+    hasSymbol === true
+  ) {
+    array = uppercase + numbers + symbols;
+  } else if (
+    hasLower === true &&
+    hasUpper === false &&
+    hasNumber === false &&
+    hasSymbol === true
+  ) {
+    array = lowercase + symbols;
   } else {
     array = lowercase + uppercase + numbers + symbols;
   }
 
+  // split to array
   var Arr = array.split("");
   console.log(Arr);
   function generatePassword(length) {
