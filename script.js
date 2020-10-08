@@ -21,6 +21,11 @@ function writePassword() {
 
   // make it a number
   length = +length;
+
+  while (length < 8 || length > 128) {
+    alert("enter a number 8~128");
+    length = prompt("length of password", "type a number from 8-128");
+  }
   // contain lowercase letters in password
   var hasLower = confirm("Password contains lower letters?");
   // contain uppercase letters in password
@@ -37,101 +42,19 @@ function writePassword() {
   console.log(hasSymbol);
 
   // will have easier way tho
-  if (
-    hasLower === false &&
-    hasUpper === false &&
-    hasNumber === false &&
-    hasSymbol === false
-  ) {
-    array = [""];
-  } else if (
-    hasLower === true &&
-    hasUpper === false &&
-    hasNumber === false &&
-    hasSymbol === false
-  ) {
-    array = lowercase;
-  } else if (
-    hasLower === false &&
-    hasUpper === true &&
-    hasNumber === false &&
-    hasSymbol === false
-  ) {
-    array = uppercase;
-  } else if (
-    hasLower === false &&
-    hasUpper === false &&
-    hasNumber === true &&
-    hasSymbol === false
-  ) {
-    array = numbers;
-  } else if (
-    hasLower === false &&
-    hasUpper === false &&
-    hasNumber === false &&
-    hasSymbol === true
-  ) {
-    array = symbols;
-  } else if (
-    hasLower === true &&
-    hasUpper === false &&
-    hasNumber === true &&
-    hasSymbol === false
-  ) {
-    array = lowercase + numbers;
-  } else if (
-    hasLower === true &&
-    hasUpper === false &&
-    hasNumber === false &&
-    hasSymbol === true
-  ) {
-    array = lowercase + symbols;
-  } else if (
-    hasLower === true &&
-    hasUpper === true &&
-    hasNumber === false &&
-    hasSymbol === false
-  ) {
-    array = lowercase + uppercase;
-  } else if (
-    hasLower === true &&
-    hasUpper === true &&
-    hasNumber === true &&
-    hasSymbol === false
-  ) {
-    array = lowercase + uppercase + numbers;
-  } else if (
-    hasLower === true &&
-    hasUpper === false &&
-    hasNumber === true &&
-    hasSymbol === true
-  ) {
-    array = lowercase + numbers + symbols;
-  } else if (
-    hasLower === true &&
-    hasUpper === true &&
-    hasNumber === false &&
-    hasSymbol === true
-  ) {
-    array = lowercase + uppercase + symbols;
-  } else if (
-    hasLower === false &&
-    hasUpper === true &&
-    hasNumber === true &&
-    hasSymbol === true
-  ) {
-    array = uppercase + numbers + symbols;
-  } else if (
-    hasLower === true &&
-    hasUpper === false &&
-    hasNumber === false &&
-    hasSymbol === true
-  ) {
-    array = lowercase + symbols;
-  } else {
-    array = lowercase + uppercase + numbers + symbols;
+  array = "";
+  if (hasLower === true) {
+    array = array + lowercase;
   }
-
+  if (hasUpper === true) {
+    array = array + uppercase;
+  }
+  if (hasNumber === true) {
+    array = array + numbers;
+  }
+  if (hasSymbol === true) {
+    array = array + hasSymbol;
+  }
   // split to array
   var Arr = array.split("");
   console.log(Arr);
