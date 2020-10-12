@@ -53,7 +53,7 @@ function writePassword() {
     array = array + numbers;
   }
   if (hasSymbol === true) {
-    array = array + hasSymbol;
+    array = array + symbols;
   }
   // split to array
   var Arr = array.split("");
